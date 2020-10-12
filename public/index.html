@@ -35,11 +35,26 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
   </head>
   <body>
     <div id="main-menu-bar"><h1>{{ sitename }} : {{ roomName }}</h1></div>
+    <div id="lobby">
+      {{ labelPlayerName }}<input type="text" id="playername" v-model="playerName"></input>
+      {{ labelRoomName }}<input type="text" id="roomname" v-model="roomName"></input>
+      <button v-on:click="changeRoom">{{ labelChange || 'change' }}</button>
+    </div>
+
     <div id="main-app">
-      <div id="lobby">
-        {{ labelPlayerName }}<input type="text" id="playername" v-model="playerName"></input>
-        {{ labelRoomName }}<input type="text" id="roomname" v-model="roomName"></input>
-        <button v-on:click="changeRoom">{{ labelChange || 'change' }}</button>
+      <div id="player-area">
+        <!-- TODO: redo with components -->
+        <ul id="player-list">
+          <span v-for="p in players">
+            <span v-if="p.active">
+              <li >{{ p.active && p.name || ''}}
+                <span v-if="p.roll" class="roll">
+                  {{ p.roll.sorted }}
+                </span>
+              </li>
+            </span>
+          </span>
+        </ul>
       </div>
       <div id="chat-area">
         <div id="messages">
@@ -62,20 +77,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
           <button v-on:click="roll" class="die" id="dice09">9</button>
           <button v-on:click="roll" class="die" id="dice10">10</button>
         </div>
-      </div>
-      <div id="player-area">
-        <!-- TODO: redo with components -->
-        <ul id="player-list">
-          <span v-for="p in players">
-            <span v-if="p.active">
-              <li >{{ p.active && p.name || ''}}
-                <span v-if="p.roll" class="roll">
-                  {{ p.roll.sorted }}
-                </span>
-              </li>
-            </span>
-          </span>
-        </ul>
       </div>
     </div>
     <div id="low-bar">

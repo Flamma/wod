@@ -22,6 +22,7 @@ html {
     background-color: seagreen;
     margin: 0 auto;
     color: white;
+    padding: 0.5em;
 }
 
 h1 {
@@ -51,6 +52,7 @@ a:hover {
     padding: 2px;
     height: 100%;
     align: center;
+    overflow-y: auto;
 }
 
 #lowbar {
@@ -72,4 +74,38 @@ a:hover {
     font-size: 120%;
     color: maroon;
     font-weight: bold;
+}
+
+#main-app {
+    height: 500px;
+    padding: 0.5em;
+}
+
+
+#player-area {
+    width: 30%;
+    float: right;
+}
+
+#chat-area {
+    width: 70%;
+    height: 100%;
+}
+
+#input-message {
+    width: 80%;
+}
+
+#button-send {
+    float: right;
+}
+
+#input-area {
+   margin-top: 0.5em;
+}
+
+#low-bar {
+    position: absolute;
+    bottom: 0px;
+    margin-bottom: 0.5 em;
 }
